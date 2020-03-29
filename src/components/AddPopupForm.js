@@ -17,8 +17,10 @@ export default class PopupForm extends Component {
     this.state = {
       name: '',
       isin: '',
-      country: ''
+      country: '',
+      id: this.props.theSecurityList.length
     }
+    // console.log(this.state.id);
   }
 
   selectCountry = (e) => {
@@ -34,10 +36,12 @@ export default class PopupForm extends Component {
       e.preventDefault();
     }
     let security = {     //1.gather security data from form submit
+      id: this.state.id + 1,
       name: this.state.name,
       isin: this.state.isin,
       country: this.state.country
      } 
+    //  console.log("This is submitted security:", security);
      this.props.submitPopup(security); //2.closePopup function, add security data
   }
   canBeSubmitted() {

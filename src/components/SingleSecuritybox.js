@@ -5,15 +5,21 @@ export default class SingleSecuritybox extends Component {
   constructor(props){
     super(props);
     this.state = {
-        showPopup: false //don't show popup
+        toggle: this.props.toggleEditing,
+        editing: this.props.editingPopup,
+        idlength: this.props.theSecurityList.length
     }
   }
+  // <SecurityBox
+  //        key={eachSecurity.id}
+  //        index={index}
+  //        theSecurity = {eachSecurity}
+  //        toggleEditing={() => this.toggleItemEditing(index)}
+  //        editingPopup = {(index) => this.editPopup(index)}
+  //        onChange={this.handleItemUpdate}
+  //        theSecurityList={this.state.list}
+  //         />
 
-  togglePopup = () => {  //triggle and close popup window
-    this.setState({  
-         showPopup: !this.state.showPopup  //toggle to show popup
-    });  
-  } 
 
   render() {
     return (
@@ -31,8 +37,8 @@ export default class SingleSecuritybox extends Component {
                 <td className="isin-width">{this.props.theSecurity.isin}</td>
                 <td className="country-width">{this.props.theSecurity.country}</td>
                 <td><button type="button">Prices</button></td>
-                <td className="price-btn"><button type="button" className="edit-btn" onClick={this.togglePopup}>Edit</button>
-                {this.state.showPopup ? <EditPopup submitPopup={(security) => this.submitPopup(security)} cancelPopup={this.togglePopup} /> 
+                <td className="edit-btn"><button type="button" className="edit-btn" onClick={this.toggle}>Edit</button>
+                {this.state.toggle ? <EditPopup editPopup={(index) => this.editing(index)} cancelPopup={this.toggle} indexNumber={this.idlength} /> 
         : null  }
                 </td>
               </tr>

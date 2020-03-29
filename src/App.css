@@ -1,3 +1,7 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
 body {
   background-color: #EEF1F5;
 }
@@ -61,7 +65,7 @@ hr.lightgray-line {
 .isin-width, .country-width {
   width: 20%;
 }
-.price-btn {
+.edit-btn {
   position: relative;
   display: flex;
   justify-content: flex-end;

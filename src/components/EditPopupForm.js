@@ -17,7 +17,8 @@ export default class PopupForm extends Component {
     this.state = {
       name: '',
       isin: '',
-      country: ''
+      country: '',
+      id: this.props.indexNumber
     }
   }
 
@@ -38,7 +39,7 @@ export default class PopupForm extends Component {
       isin: this.state.isin,
       country: this.state.country
      } 
-     this.props.submitPopup(security); //2.closePopup function, add security data
+     this.props.editPopup(security); //2.closePopup function, add security data
   }
   canBeSubmitted() {
     const errors = validate(this.state.name, this.state.isin, this.state.country);
@@ -58,7 +59,7 @@ export default class PopupForm extends Component {
       <div className='popup'>  
       <div className='popup-inner'>  
       <form onSubmit={this.closePopupSubmit} className="add-form">
-        <h2>Add Security</h2>
+        <h2>Edit Security</h2>
         <div className="form-input">
         <FormField onChange={this.updateInput} className={errors.name ? "input error" : "input"} label="Name" type="text" name="name" value={this.state.name} />
         <FormField onChange={this.updateInput} className={errors.isin ? "input error" : "input"} label="ISIN" type="text" name="isin" value={this.state.isin} />

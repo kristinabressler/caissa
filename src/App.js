@@ -30,6 +30,21 @@ class App extends Component {
     }//call addSecurity function when you click to open the popup and you submit the security to the array after you close
   } 
 
+  toggleItemEditing = (index) => {
+    this.setState({
+      list: this.state.list.map((eachSecurity, itemIndex) => {
+        if (itemIndex === index) {
+          return {
+            ...eachSecurity,
+            isEditing: !eachSecurity.isEditing
+          }
+        }
+        console.log("Index", index);
+        return eachSecurity;
+      })
+    });
+  }
+
   addSecurity = (security) => { //get security data
     let newSecuritiesList = [...this.state.list] //create new array
     newSecuritiesList.push(security) //add it to food array
@@ -41,11 +56,16 @@ class App extends Component {
  }
 
   showSecurity = () =>{
-    return this.state.list.map((eachSecurity,i)=>{
+    return this.state.list.map((eachSecurity,index)=>{
         return(
         <SecurityBox
-         key={i}
+         key={eachSecurity.id}
+         index={index}
          theSecurity = {eachSecurity}
+         toggleEditing={() => this.toggleItemEditing(index)}
+         editingPopup = {(index) => this.editPopup(index)}
+         onChange={this.handleItemUpdate}
+         theSecurityList={this.state.list}
           />
         )
     })
@@ -67,7 +87,7 @@ class App extends Component {
           <h2>Securities</h2>
           {this.showSecurity()}
           <button type="button" className="btn add-btn" onClick={this.togglePopup}>Add</button>
-          {this.state.showPopup ? <AddPopup submitPopup={(security) => this.submitPopup(security)} cancelPopup={this.togglePopup} /> 
+          {this.state.showPopup ? <AddPopup submitPopup={(security) => this.submitPopup(security)} cancelPopup={this.togglePopup} theSecurityList={this.state.list} /> 
         : null  }
         </div>
       </div>
