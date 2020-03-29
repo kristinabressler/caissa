@@ -25,6 +25,18 @@ export default class SingleSecuritybox extends Component {
     editCurrentSecurity({ ...editSecurity, id });
   };
 
+    /* handles delete current security form submissions */
+    handleDeleteSecuritySubmission = deleteSecurity => {
+      const { deleteCurrentSecurity, id } = this.props;
+  
+      // toggle the pop up (close)
+      this.togglePopup();
+  
+      // sends the deleteSecurity fields (name, isin, country) + id back to
+      // App's "this.deleteCurrentSecurity"
+      deleteCurrentSecurity({ ...deleteSecurity, id });
+    };
+
   render() {
     return (
       <div className="box">
@@ -54,9 +66,8 @@ export default class SingleSecuritybox extends Component {
                   {this.state.showPopup ? (
                     <SecurityForm
                       {...this.props}
-                      handleEditSecuritySubmission={
-                        this.handleEditSecuritySubmission
-                      }
+                      handleEditSecuritySubmission={ this.handleEditSecuritySubmission }
+                      handleDeleteSecuritySubmission={ this.handleDeleteSecuritySubmission }
                       cancelPopup={this.togglePopup}
                     />
                   ) : null}

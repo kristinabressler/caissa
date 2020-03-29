@@ -34,6 +34,16 @@ class App extends Component {
         list.id === editedSecurity.id ? { list, ...editedSecurity } : list
       )
     }));
+    console.log("id?", editedSecurity.id);
+  };
+
+  /* delete the security from the list */
+  deleteSecurity = deleteSecurity => {
+    let deleteList = [...this.state.list];
+  
+    deleteList.splice(deleteSecurity.id, 1);
+  
+    this.setState({list: deleteList})
   };
 
   /* adds a new security to the list */
@@ -62,6 +72,7 @@ class App extends Component {
                 {...props}
                 key={props.id}
                 editCurrentSecurity={this.editCurrentSecurity}
+                deleteSecurity={this.deleteSecurity}
               />
             ))}
             <button

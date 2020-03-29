@@ -33,7 +33,7 @@ export default class SecurityForm extends Component {
     e.preventDefault();
 
     const { name, isin, country } = this.state;
-    const { addSecurity, handleEditSecuritySubmission } = this.props;
+    const { addSecurity, handleEditSecuritySubmission, handleDeleteSecuritySubmission } = this.props;
 
     const fields = {
       name,
@@ -46,12 +46,13 @@ export default class SecurityForm extends Component {
 
     // this sets formError state, then after setting state
     // it'll check if there are errors, if no errors, then
-    // it will either call addSecurity or editSecurity depending on if
+    // it will either call addSecurity or editSecurity or deleteSecurity depending on if
     // one of them was passed in from a parent component
     this.setState({ formErrors }, () => {
       if (!formErrors) {
         if (addSecurity) addSecurity(fields);
-        else handleEditSecuritySubmission(fields);
+        else if (handleEditSecuritySubmission(fields));
+        else (handleDeleteSecuritySubmission(fields));
       }
     });
   };
@@ -93,9 +94,9 @@ export default class SecurityForm extends Component {
                   )}
                 </div>
               </div>
-              {/* <FormField onChange={this.updateInput} label="Country" type="text" name="country" value={this.state.country} /> */}
             </div>
             <div className="buttons-box">
+            {!this.props.addSecurity ? <button type="button" onClick={() => this.props.delate()} className="btn delete-button" >Delete</button> : null}
               <button
                 type="button"
                 onClick={() => this.props.cancelPopup()}
