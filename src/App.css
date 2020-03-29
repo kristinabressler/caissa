@@ -65,7 +65,7 @@ hr.lightgray-line {
 .isin-width, .country-width {
   width: 20%;
 }
-.edit-btn {
+.editing-btn {
   position: relative;
   display: flex;
   justify-content: flex-end;
