@@ -7,7 +7,8 @@ export default class SingleSecuritybox extends Component {
     this.state = {
         toggle: this.props.toggleEditing,
         editing: this.props.editingPopup,
-        idlength: this.props.theSecurityList.length
+        idlength: this.props.theSecurityList.length,
+        item: this.props.theSecurity
     }
   }
   // <SecurityBox
@@ -38,7 +39,7 @@ export default class SingleSecuritybox extends Component {
                 <td className="country-width">{this.props.theSecurity.country}</td>
                 <td><button type="button">Prices</button></td>
                 <td className="edit-btn"><button type="button" className="edit-btn" onClick={this.toggle}>Edit</button>
-                {this.state.toggle ? <EditPopup editPopup={(index) => this.editing(index)} cancelPopup={this.toggle} indexNumber={this.idlength} /> 
+                {this.state.toggle ? <EditPopup editPopup={(index) => this.editing(index)} cancelPopup={this.toggle} indexNumber={this.idlength} slist={this.state.item} /> 
         : null  }
                 </td>
               </tr>
