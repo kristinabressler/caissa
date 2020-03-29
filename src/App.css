@@ -1,38 +1,190 @@
+body {
+  background-color: #EEF1F5;
+}
 .App {
-  text-align: center;
+  /* text-align: center; */
+}
+button {
+  transition: all 0.3s;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 30px;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  padding-right: 15px;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  padding: 0 30px;
+  min-height: 60px;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-bottom: 20px;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.container {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+/*Security box*/
+.box { 
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #D2D8DF;
+  border-radius: 0.3rem;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+.securitytable .title h2 {
+  margin: 0 0 10px;
+}
+hr.lightgray-line {
+  border-top: 1px solid #dedede;
+}
+.securitytable table {
+  width: 100%;
+}
+.isin-width, .country-width {
+  width: 20%;
+}
+.price-btn {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+.edit-btn {
+  display: block;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  height: 30px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  cursor: pointer;
+  background-color: #EEF1F5;
+  color: #223140;
+}
+.edit-btn:hover {
+  background-color: #d9dce1;
+}
+.add-btn {
+  background-color: #239ACC;
+  color: #ffffff;
+}
+.add-btn:hover {
+  background-color: rgba(35, 154, 204, 0.9);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*Pop up */
+.popup {  
+  position: fixed;  
+  width: 100%;  
+  height: 100%;  
+  top: 0;  
+  left: 0;  
+  right: 0;  
+  bottom: 0;  
+  margin: auto;  
+  background-color: rgba(0,0,0, 0.5);  
+  z-index: 10;
+}  
+.popup-inner {  
+  position: absolute;  
+  left: 25%;  
+  right: 25%;  
+  top: 25%;  
+  bottom: 25%;  
+  margin: auto;  
+  border-radius: 20px;  
+  background: white; 
+  padding: 20px 30px;
+  z-index: 20; 
+}
+/* Add Form */
+.add-form {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+.form-input {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.field {
+  width: 48%;
+  display: block;
+  margin-bottom: 15px;
+}
+.field label {
+  display: block;
+  margin-bottom: 3px;
+}
+.control input, .control select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 20px;
+  padding: 5px 10px;
+  margin: 0 0 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+.control input.error {
+  border-color: red;
+}
+.err-msg {
+  color: red;
+  font-size: 0.8em;
+}
+.buttons-box {
+  display: flex;
+  justify-content: flex-end;
+  margin-top:auto;
+}
+.btn {
+  display: block;
+  width: 80px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  height: 40px;
+  cursor: pointer;
+}
+.save-button {
+  background-color: #66b55c;
+  color: #ffffff;
+}
+.save-button:hover {
+  background-color: #669509;
+}
+.save-button:disabled {
+  background-color: #dedede;
+  color: #ffffff;
+}
+.cancel-button {
+  background-color: red;
+  color: #ffffff;
+  margin-right: 10px;
+}
+.cancel-button:hover {
+  background-color: #c10202;
 }

@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Lorem",
+    "isin": "US02079K1079",
+    "country": "Finland",
+    "price": [
+      {
+        "date": "01/01/19",
+        "number": 1000
+      },
+      {
+        "date": "01/02/19",
+        "number": 900
+      },
+      {
+        "date": "01/03/19",
+        "number": 800
+      },
+      {
+        "date": "01/04/19",
+        "number": 700
+      },
+      {
+        "date": "01/05/19",
+        "number": 600
+      },
+      {
+        "date": "01/05/19",
+        "number": 600
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Ipson",
+    "isin": "US02079K1079",
+    "country": "Sweden",
+    "price": [
+      {
+        "date": "01/01/19",
+        "number": 1000
+      },
+      {
+        "date": "01/02/19",
+        "number": 900
+      },
+      {
+        "date": "01/03/19",
+        "number": 800
+      },
+      {
+        "date": "01/04/19",
+        "number": 700
+      },
+      {
+        "date": "01/05/19",
+        "number": 600
+      },
+      {
+        "date": "01/05/19",
+        "number": 600
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Lorem Ipson",
+    "isin": "US02079K1079",
+    "country": "Iceland",
+    "price": [
+      {
+        "date": "01/01/19",
+        "number": 1000
+      },
+      {
+        "date": "01/02/19",
+        "number": 900
+      },
+      {
+        "date": "01/03/19",
+        "number": 800
+      },
+      {
+        "date": "01/04/19",
+        "number": 700
+      },
+      {
+        "date": "01/05/19",
+        "number": 600
+      },
+      {
+        "date": "01/05/19",
+        "number": 600
+      }
+    ]
+  }
+]
