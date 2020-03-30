@@ -15,35 +15,25 @@ class App extends Component {
 
   /* toggle and close popup window */
   togglePopup = () => {
-    // when toggling state, using the "prevState" callback function
-    // ensures that the state is accurate when toggled! Not doing so,
-    // can cause issues if you have many components updating the same
-    // state variable. which can cause a racing condition.
     this.setState(prevState => ({
-      showPopup: !prevState.showPopup // reciporates the previous "showPopup" value
+      showPopup: !prevState.showPopup 
     }));
   };
 
   /* edits current security */
   editCurrentSecurity = editedSecurity => {
     this.setState(prevState => ({
-      // map over previous list and check if the edited security id matches
-      // an id in our list -- if it does, overrides its "name", "isin",
-      // and "country" fields
       list: prevState.list.map(list =>
         list.id === editedSecurity.id ? { list, ...editedSecurity } : list
       )
     }));
-    console.log("id?", editedSecurity.id);
   };
 
   /* delete the security from the list */
-  deleteSecurity = deleteSecurity => {
-    let deleteList = [...this.state.list];
-  
-    deleteList.splice(deleteSecurity.id, 1);
-  
-    this.setState({list: deleteList})
+  deleteSecurity = deleteSecurityId => {
+    this.setState(prevState => ({
+      list: prevState.list.filter(item => item.id !== deleteSecurityId)
+    }));
   };
 
   /* adds a new security to the list */
@@ -71,6 +61,7 @@ class App extends Component {
               <SecurityBox
                 {...props}
                 key={props.id}
+                securitylist = {this.state.list}
                 editCurrentSecurity={this.editCurrentSecurity}
                 deleteSecurity={this.deleteSecurity}
               />

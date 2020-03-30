@@ -118,7 +118,7 @@ hr.lightgray-line {
   padding: 20px 30px;
   z-index: 20; 
 }
-/* Add Form */
+/* Popup Form */
 .add-form {
   position: relative;
   width: 100%;
@@ -145,6 +145,7 @@ hr.lightgray-line {
 .control input, .control select {
   display: block;
   width: 100%;
+  height: 40px;
   box-sizing: border-box;
   font-size: 20px;
   padding: 5px 10px;
@@ -161,8 +162,12 @@ hr.lightgray-line {
 }
 .buttons-box {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top:auto;
+}
+.add-btns {
+  display: flex;
+  justify-content: flex-end;
 }
 .btn {
   display: block;
@@ -185,10 +190,18 @@ hr.lightgray-line {
   color: #ffffff;
 }
 .cancel-button {
-  background-color: red;
+  background-color: #1f9ff0;
   color: #ffffff;
   margin-right: 10px;
 }
 .cancel-button:hover {
+  background-color: #1984c7;
+}
+.delete-button {
+  background-color: red;
+  color: #ffffff;
+  margin-right: 10px;
+}
+.delete-button:hover {
   background-color: #c10202;
 }

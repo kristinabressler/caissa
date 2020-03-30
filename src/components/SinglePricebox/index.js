@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import SecurityForm from "../SecurityForm/index";
-import PriceForm from "../PriceForm/index";
+// import PriceForm from "../PriceForm/index";
 
-export default class SingleSecuritybox extends Component {
-  constructor(props) {
-    super(props);
-      this.state = {
-        showPopup: false //don't show popup
-        // pricelist: {this.props.price}
-    };
-  }
+export default class SinglePricebox extends Component {
+  state = {
+    showPopup: false //don't show popup
+  };
 
   /* toggle and close popup edit form window */
   togglePopup = () => {
@@ -22,13 +17,9 @@ export default class SingleSecuritybox extends Component {
   handleEditSecuritySubmission = editSecurity => {
     const { editCurrentSecurity, id } = this.props;
 
-    // toggle the pop up (close)
-    this.togglePopup();
-
     // sends the editSecurity fields (name, isin, country) + id back to
     // App's "this.editCurrentSecurity"
     editCurrentSecurity({ ...editSecurity, id });
-    console.log("security id?", id);
   };
 
     /* handles delete current security form submissions */
@@ -45,27 +36,14 @@ export default class SingleSecuritybox extends Component {
   render() {
     return (
       <div className="box">
-        <article className="securitytable">
-          <div className="title">
-            <h2>
-              <strong>{this.props.name}</strong>
-            </h2>
-            <hr className="lightgray-line" />
-          </div>
+        <article className="pricetable">
           <table>
             <tbody>
               <tr>
                 <td className="isin-width">{this.props.isin}</td>
                 <td className="country-width">{this.props.country}</td>
-                {/* <td>{this.props.price[0].number}</td> */}
                 <td>
                   <button type="button" className="price-btn" onClick={this.togglePopup}>Prices</button>
-                  {this.state.showPopup ? (
-                    <PriceForm
-                      pricelist= {this.props.price}
-                      cancelPopup={this.togglePopup}
-                    />
-                  ) : null}
                 </td>
                 <td className="editing-btn">
                   <button
@@ -75,14 +53,13 @@ export default class SingleSecuritybox extends Component {
                   >
                     Edit
                   </button>
-                  {this.state.showPopup ? (
-                    <SecurityForm
-                      {...this.props}
-                      handleEditSecuritySubmission={ this.handleEditSecuritySubmission }
-                      handleDeleteSecurity={this.handleDeleteSecurity}
-                      cancelPopup={this.togglePopup}
-                    />
-                  ) : null}
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    className="delete-btn">
+                      X
+                    </button>
                 </td>
               </tr>
             </tbody>

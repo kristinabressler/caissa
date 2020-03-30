@@ -33,7 +33,7 @@ export default class SecurityForm extends Component {
     e.preventDefault();
 
     const { name, isin, country } = this.state;
-    const { addSecurity, handleEditSecuritySubmission, handleDeleteSecuritySubmission } = this.props;
+    const { addSecurity, handleEditSecuritySubmission } = this.props;
 
     const fields = {
       name,
@@ -51,8 +51,7 @@ export default class SecurityForm extends Component {
     this.setState({ formErrors }, () => {
       if (!formErrors) {
         if (addSecurity) addSecurity(fields);
-        else if (handleEditSecuritySubmission(fields));
-        else (handleDeleteSecuritySubmission(fields));
+        else handleEditSecuritySubmission(fields);
       }
     });
   };
@@ -96,7 +95,16 @@ export default class SecurityForm extends Component {
               </div>
             </div>
             <div className="buttons-box">
-            {!this.props.addSecurity ? <button type="button" onClick={() => this.props.delete()} className="btn delete-button" >Delete</button> : null}
+            {this.props.handleDeleteSecurity && (
+                <button
+                  type="button"
+                  onClick={() => this.props.handleDeleteSecurity()}
+                  className="btn delete-button"
+                >
+                  Delete
+                </button>
+              )}
+              <div className="add-btns">
               <button
                 type="button"
                 onClick={() => this.props.cancelPopup()}
@@ -107,6 +115,7 @@ export default class SecurityForm extends Component {
               <button type="submit" className="btn save-button">
                 Submit
               </button>
+              </div>
             </div>
           </form>
         </div>
