@@ -96,7 +96,7 @@ export default class SecurityForm extends Component {
               </div>
             </div>
             <div className="buttons-box">
-            {!this.props.addSecurity ? <button type="button" onClick={() => this.props.delate()} className="btn delete-button" >Delete</button> : null}
+            {!this.props.addSecurity ? <button type="button" onClick={() => this.props.delete()} className="btn delete-button" >Delete</button> : null}
               <button
                 type="button"
                 onClick={() => this.props.cancelPopup()}
