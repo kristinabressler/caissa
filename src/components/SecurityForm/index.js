@@ -94,7 +94,7 @@ export default class SecurityForm extends Component {
                 </div>
               </div>
             </div>
-            <div className="buttons-box">
+            <div className={!this.props.addSecurity ? "buttons-box flex-content-between" : "buttons-box flex-content-end"}>
             {this.props.handleDeleteSecurity && (
                 <button
                   type="button"

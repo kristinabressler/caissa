@@ -6,7 +6,8 @@ export default class SingleSecuritybox extends Component {
   constructor(props) {
     super(props);
       this.state = {
-        showPopup: false //don't show popup
+        showPopup: false,
+        showPricePopup: false //don't show popup
         // pricelist: {this.props.price}
     };
   }
@@ -15,6 +16,11 @@ export default class SingleSecuritybox extends Component {
   togglePopup = () => {
     this.setState(prevState => ({
       showPopup: !prevState.showPopup
+    }));
+  };
+  togglePricePopup = () => {
+    this.setState(prevState => ({
+      showPricePopup: !prevState.showPricePopup
     }));
   };
 
@@ -59,11 +65,11 @@ export default class SingleSecuritybox extends Component {
                 <td className="country-width">{this.props.country}</td>
                 {/* <td>{this.props.price[0].number}</td> */}
                 <td>
-                  <button type="button" className="price-btn" onClick={this.togglePopup}>Prices</button>
-                  {this.state.showPopup ? (
+                  <button type="button" className="price-btn" onClick={this.togglePricePopup}>Prices</button>
+                  {this.state.showPricePopup ? (
                     <PriceForm
                       pricelist= {this.props.price}
-                      cancelPopup={this.togglePopup}
+                      cancelPopup={this.togglePricePopup}
                     />
                   ) : null}
                 </td>

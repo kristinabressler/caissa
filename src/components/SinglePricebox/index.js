@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import PriceForm from "../PriceForm/index";
 
 export default class SinglePricebox extends Component {
   state = {
@@ -13,45 +12,27 @@ export default class SinglePricebox extends Component {
     }));
   };
 
-  /* handles edit current security form submissions */
-  handleEditSecuritySubmission = editSecurity => {
-    const { editCurrentSecurity, id } = this.props;
-
-    // sends the editSecurity fields (name, isin, country) + id back to
-    // App's "this.editCurrentSecurity"
-    editCurrentSecurity({ ...editSecurity, id });
-  };
-
-    /* handles delete current security form submissions */
-  handleDeleteSecurity = () => {
-    const { deleteSecurity, id } = this.props;
-
-    // toggle the pop up (close)
-    this.togglePopup();
-
-    // sends the id back to  App's "this.deleteSecurity"
-    deleteSecurity(id);
-  };
-
   render() {
     return (
-      <div className="box">
+      <div className="pricebox">
         <article className="pricetable">
           <table>
             <tbody>
               <tr>
-                <td className="isin-width">{this.props.isin}</td>
-                <td className="country-width">{this.props.country}</td>
-                <td>
-                  <button type="button" className="price-btn" onClick={this.togglePopup}>Prices</button>
-                </td>
+              {this.toggleEditing ?
+                "date"
+                :
+                "number"
+              }
+                <td className="date-width">{this.props.date}</td>
+                <td className="price-width">{this.props.number}</td>
                 <td className="editing-btn">
                   <button
                     type="button"
                     className="edit-btn"
-                    onClick={this.togglePopup}
+                    onClick={this.toggleEditing}
                   >
-                    Edit
+                    {this.toggleEditing ? "Save" : "Edit"}
                   </button>
                 </td>
                 <td>

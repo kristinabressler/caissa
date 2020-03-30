@@ -39,27 +39,27 @@
     "price": [
       {
         "date": "01/01/19",
-        "number": 1000
+        "number": 1050
       },
       {
         "date": "01/02/19",
-        "number": 900
+        "number": 950
       },
       {
         "date": "01/03/19",
-        "number": 800
+        "number": 850
       },
       {
         "date": "01/04/19",
-        "number": 700
+        "number": 750
       },
       {
         "date": "01/05/19",
-        "number": 600
+        "number": 650
       },
       {
         "date": "01/05/19",
-        "number": 600
+        "number": 650
       }
     ]
   },
@@ -71,27 +71,27 @@
     "price": [
       {
         "date": "01/01/19",
-        "number": 1000
+        "number": 1030
       },
       {
         "date": "01/02/19",
-        "number": 900
+        "number": 930
       },
       {
         "date": "01/03/19",
-        "number": 800
+        "number": 830
       },
       {
         "date": "01/04/19",
-        "number": 700
+        "number": 730
       },
       {
         "date": "01/05/19",
-        "number": 600
+        "number": 630
       },
       {
         "date": "01/05/19",
-        "number": 600
+        "number": 630
       }
     ]
   }
