@@ -12,10 +12,34 @@ export default class SinglePricebox extends Component {
     }));
   };
 
+
+  toggleEditPriceSubmission = getPriceIndex => {
+      const { editCurrentPrice, date } = this.props;
+  
+      // toggle the pop up (close)
+      this.showPopup();
+  
+      toggleItemEditing({ ...getPriceIndex, date });
+    };
+
+      /* handles edit current security form submissions */
+  // handleEditSecuritySubmission = editSecurity => {
+  //   const { editCurrentSecurity, id } = this.props;
+
+  //   // toggle the pop up (close)
+  //   this.togglePopup();
+
+  //   // sends the editSecurity fields (name, isin, country) + id back to
+  //   // App's "this.editCurrentSecurity"
+  //   editCurrentSecurity({ ...editSecurity, id });
+  // };
+
   render() {
     return (
       <div className="pricebox">
         <article className="pricetable">
+        {this.toggleItemEditing
+              ? "editing" : "not editing"}
           <table>
             <tbody>
               <tr>
@@ -25,9 +49,9 @@ export default class SinglePricebox extends Component {
                   <button
                     type="button"
                     className="edit-btn"
-                    onClick={this.toggleEditing}
+                    onClick={this.toggleEditPriceSubmission}
                   >
-                    {this.toggleEditing ? "Save" : "Edit"}
+                    {this.toggleItemEditing ? "Save" : "Edit"}
                   </button>
                 </td>
                 <td>

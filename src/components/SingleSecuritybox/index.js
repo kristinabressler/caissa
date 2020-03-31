@@ -10,7 +10,7 @@ export default class SingleSecuritybox extends Component {
         showPricePopup: false, //don't show popup
         pricelist: this.props.price
     };
-    console.log("price list", this.state.pricelist);
+    // console.log("price list", this.state.pricelist);
   }
 
   /* toggle and close popup edit form window */
@@ -85,8 +85,8 @@ export default class SingleSecuritybox extends Component {
                   {this.state.showPricePopup ? (
                     <PriceForm
                       pricelist= {this.props.price}
-                      updatePrice={this.updatePrice}
-                      cancelPopup={this.togglePricePopup}
+                      // updatePrice={this.updatePrice}
+                      closeUpdatePopup={this.updatePrice}
                     />
                   ) : null}
                 </td>
