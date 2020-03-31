@@ -48,6 +48,23 @@ export default class SingleSecuritybox extends Component {
     deleteSecurity(id);
   };
 
+  updatePrice = (newPriceline) => {
+  
+      this.togglePricePopup();
+      
+      this.setState({pricelist: newPriceline})
+
+  };
+
+    // /* adds a new security to the list */
+    // addSecurity = newSecurity => {
+    //   this.setState(prevState => ({
+    //     showPopup: !prevState.showPopup,
+    //     // spreads out the previous list and adds the new security with a unique id
+    //     list: [...prevState.list, { ...newSecurity, id: uuid() }]
+    //   }));
+    // };
+
   render() {
     return (
       <div className="box">
@@ -68,6 +85,7 @@ export default class SingleSecuritybox extends Component {
                   {this.state.showPricePopup ? (
                     <PriceForm
                       pricelist= {this.props.price}
+                      updatePrice={this.updatePrice}
                       cancelPopup={this.togglePricePopup}
                     />
                   ) : null}

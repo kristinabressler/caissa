@@ -10,6 +10,7 @@ export default class PriceForm extends Component {
 
     this.state = {
       priceArr: this.props.pricelist,
+      newPriceArr: this.props.updatePrice,
       showPricePopup: false,
       addPricePopup: false,
       date: props.date || "",
@@ -43,9 +44,24 @@ export default class PriceForm extends Component {
       this.setState(prevState => ({
         addPricePopup: !prevState.addPricePopup,
         // spreads out the previous list and adds the new price with a unique id
-        priceArr: [...prevState.priceArr, { ...newPrice }]
+        priceArr: [...prevState.priceArr, { ...newPrice },]
       }));
     };
+
+    handlePriceSubmission = () => {
+      
+    };
+
+      /* handles update current price list form submissions */
+      // handleUpdatePriceList = () => {
+      //   const { priceArr } = this.props;
+    
+      //   // toggle the pop up (close)
+      //   this.addPricePopup();
+    
+      //   // sends the price list back
+      //   updatePriceList(priceArr);
+      // };
 
   render() {
     return (
