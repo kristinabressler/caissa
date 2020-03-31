@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { CountryDropdown } from "react-country-region-selector";
 import FormField from "../FormFieldBox/index";
 
 export default class AddPriceForm extends Component {
@@ -9,7 +8,7 @@ export default class AddPriceForm extends Component {
     // initializes state from props if your editing a security
     // else it'll be a blank form
     this.state = {
-      date: props.date || "",
+      date: new Date().toLocaleDateString(),
       number: props.number || "",
       formErrors: false
     };
@@ -28,7 +27,7 @@ export default class AddPriceForm extends Component {
     e.preventDefault();
 
     const { date, number } = this.state;
-    const { addSecurity } = this.props;
+    const { addPrice } = this.props;
 
     const fields = {
       date,
@@ -51,12 +50,15 @@ export default class AddPriceForm extends Component {
 
   render() {
     const { date, number, formErrors } = this.state;
+
     return (
       <div className="mini-popup">
         <div className="mini-popup-inner">
-          <form onSubmit={this.handlePriceFormSubmit} className="add-form">
+          <form onSubmit={this.handlePriceFormSubmit} className="addprice-form">
             <h2>Add Price</h2>
-            <div className="form-input">
+            <div className="addform-input">
+              <h4>Today's date:</h4>
+              <h3>{date}</h3>
               <FormField
                 onChange={this.updateInput}
                 hasError={formErrors}

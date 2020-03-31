@@ -12,8 +12,6 @@ export default class SecurityForm extends Component {
       name: props.name || "",
       isin: props.isin || "",
       country: props.country || "",
-      date: props.date || "",
-      number: props.number || "",
       formErrors: false
     };
   }
@@ -57,33 +55,6 @@ export default class SecurityForm extends Component {
       }
     });
   };
-
-    /* handles price form submissions */
-    handlePriceFormSubmit = e => {
-      // prevents page refreshes on submission
-      e.preventDefault();
-  
-      const { date, number } = this.state;
-      const { addPrice } = this.props;
-  
-      const fields = {
-        date,
-        number
-      };
-  
-      // checks if any of the form fields contain empty values
-      const formErrors = Object.values(fields).some(value => !value);
-  
-      // this sets formError state, then after setting state
-      // it'll check if there are errors, if no errors, then
-      // it will either call addSecurity or editSecurity or deleteSecurity depending on if
-      // one of them was passed in from a parent component
-      this.setState({ formErrors }, () => {
-        if (!formErrors) {
-          if (addPrice) addPrice(fields);
-        }
-      });
-    };
 
   render() {
     const { country, isin, name, formErrors } = this.state;

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300;1,500&display=swap');
+h1, h2, h3, h4, h5, h6, p, button, label {
+  font-family: 'Roboto', sans-serif;
+}
 html, body {
   margin: 0;
   padding: 0;
@@ -118,6 +122,35 @@ hr.lightgray-line {
   padding: 20px 30px;
   z-index: 20; 
 }
+
+/* Mini Popup */
+.mini-popup {  
+  position: fixed;  
+  width: 100%;  
+  height: 100%;  
+  top: 0;  
+  left: 0;  
+  right: 0;  
+  bottom: 0;  
+  margin: auto;  
+  background-color: rgba(0,0,0, 0.5);  
+  z-index: 30;
+}  
+.mini-popup-inner {  
+  position: absolute;  
+  width: 300px;
+  height: 240px;
+  left: 25%;  
+  right: 25%;  
+  top: 25%;  
+  bottom: 25%;  
+  margin: auto;  
+  border-radius: 20px;  
+  background: white; 
+  padding: 20px 30px;
+  z-index: 40; 
+}
+
 /* Popup Form */
 .add-form {
   position: relative;
@@ -189,6 +222,7 @@ hr.lightgray-line {
 .save-button {
   background-color: #66b55c;
   color: #ffffff;
+  margin-left: 10px;
 }
 .save-button:hover {
   background-color: #669509;
@@ -200,7 +234,6 @@ hr.lightgray-line {
 .cancel-button {
   background-color: #1f9ff0;
   color: #ffffff;
-  margin-right: 10px;
 }
 .cancel-button:hover {
   background-color: #1984c7;
@@ -214,6 +247,28 @@ hr.lightgray-line {
   background-color: #c10202;
 }
  /* Price Box */
+ .addprice-form {
+  position: relative;
+  width: 100%;
+  height: 100%;
+ }
+ .addform-input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+ }
+ .addform-input h3 {
+   margin: 0 0 1em;
+ }
+ .addform-input h4 {
+  font-size: 0.8em;
+  font-weight: 400;
+  margin: 0 0 1em;
+ }
+ .addform-input .field {
+   width: 100%;
+ }
  .pricebox {
   position: relative;
   width: 100%;

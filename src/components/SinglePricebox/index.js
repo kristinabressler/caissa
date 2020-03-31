@@ -19,11 +19,6 @@ export default class SinglePricebox extends Component {
           <table>
             <tbody>
               <tr>
-              {this.toggleEditing ?
-                "date"
-                :
-                "number"
-              }
                 <td className="date-width">{this.props.date}</td>
                 <td className="price-width">{this.props.number}</td>
                 <td className="editing-btn">

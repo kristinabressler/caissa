@@ -7,9 +7,10 @@ export default class SingleSecuritybox extends Component {
     super(props);
       this.state = {
         showPopup: false,
-        showPricePopup: false //don't show popup
-        // pricelist: {this.props.price}
+        showPricePopup: false, //don't show popup
+        pricelist: this.props.price
     };
+    console.log("price list", this.state.pricelist);
   }
 
   /* toggle and close popup edit form window */
@@ -34,7 +35,6 @@ export default class SingleSecuritybox extends Component {
     // sends the editSecurity fields (name, isin, country) + id back to
     // App's "this.editCurrentSecurity"
     editCurrentSecurity({ ...editSecurity, id });
-    console.log("security id?", id);
   };
 
     /* handles delete current security form submissions */
@@ -63,7 +63,6 @@ export default class SingleSecuritybox extends Component {
               <tr>
                 <td className="isin-width">{this.props.isin}</td>
                 <td className="country-width">{this.props.country}</td>
-                {/* <td>{this.props.price[0].number}</td> */}
                 <td>
                   <button type="button" className="price-btn" onClick={this.togglePricePopup}>Prices</button>
                   {this.state.showPricePopup ? (

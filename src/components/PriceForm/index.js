@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PriceBox from "../SinglePricebox/index";
-import SecurityForm from "../SecurityForm/index";
-import { uuid } from "uuidv4";
+// import SecurityForm from "../SecurityForm/index";
+import AddPriceForm from "../AddPriceForm/index";
+// import { uuid } from "uuidv4";
 
 export default class PriceForm extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class PriceForm extends Component {
     this.state = {
       priceArr: this.props.pricelist,
       showPricePopup: false,
-      addPricePopup: false
+      addPricePopup: false,
       date: props.date || "",
       number: props.number || ""
     };
@@ -30,23 +31,23 @@ export default class PriceForm extends Component {
       showPricePopup: !prevState.showPricePopup
     }));
   };
-  togglePricePopup = () => {
+
+  addPricePopup = () => {
     this.setState(prevState => ({
-      showPricePopup: !prevState.showPricePopup
+      addPricePopup: !prevState.addPricePopup
     }));
   };
 
     /* adds a new price to the list */
     addPrice = newPrice => {
       this.setState(prevState => ({
-        showPopup: !prevState.showPopup,
+        addPricePopup: !prevState.addPricePopup,
         // spreads out the previous list and adds the new price with a unique id
-        priceArr: [...prevState.priceArr, { ...newPrice, id: uuid() }]
+        priceArr: [...prevState.priceArr, { ...newPrice }]
       }));
     };
 
   render() {
-    // const { date, price} = this.state;
     return (
       <div className="popup">
         <div className="popup-inner">
@@ -63,12 +64,12 @@ export default class PriceForm extends Component {
             <div className="buttons-box flex-content-between">
               <button
                 type="button"
-                onClick={this.togglePopup}
+                onClick={this.addPricePopup}
                 className="btn add-button">Add +</button>
-                {this.state.showPopup && (
+                {this.state.addPricePopup && (
                       <AddPriceForm
                         addPrice={this.addPrice}
-                        cancelPopup={this.togglePopup}
+                        cancelPopup={this.addPricePopup}
                       />
                     )}
               <div className="add-btns">
