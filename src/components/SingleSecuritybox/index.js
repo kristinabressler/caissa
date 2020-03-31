@@ -86,7 +86,7 @@ export default class SingleSecuritybox extends Component {
                     <PriceForm
                       pricelist= {this.props.price}
                       // updatePrice={this.updatePrice}
-                      closeUpdatePopup={this.updatePrice}
+                      cancelPopup={this.togglePricePopup}
                     />
                   ) : null}
                 </td>

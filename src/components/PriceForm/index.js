@@ -57,15 +57,15 @@ export default class PriceForm extends Component {
     //   updatePrice(priceArr);
     // };
 
-    toggleItemEditing = () => {
-      this.setState(prevState => ({
-        priceArr: prevState.priceArr.map(priceItem => {
+    // toggleItemEditing = () => {
+    //   this.setState(prevState => ({
+    //     priceArr: prevState.priceArr.map(priceItem => {
 
-              // isToggleOn: !state.isToggleOn;
+    //           // isToggleOn: !state.isToggleOn;
             
-        })
-      }));
-    };
+    //     })
+    //   }));
+    // };
 
     // toggleItemEditing = index => {
     //   this.setState({
@@ -91,11 +91,11 @@ export default class PriceForm extends Component {
           <div className="price-form">
             <h2>Prices</h2>
             <div className="scroll-box">
-            {this.state.priceArr.map((props, index) => (
+            {this.state.priceArr.map((props) => (
               <PriceBox
                 {...props}
-                key={props.date}
-                toggleItemEditing={this.toggleItemEditing()}
+                // key={props.date}
+                // toggleItemEditing={this.toggleItemEditing()}
                 onChange={this.handleItemUpdate}
               />
             ))}

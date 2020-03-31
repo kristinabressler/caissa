@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 export default class SinglePricebox extends Component {
   state = {
-    showPopup: false //don't show popup
+    showPopup: false, //don't show popup
+    todaydate: this.props.date
   };
 
   /* toggle and close popup edit form window */
@@ -14,12 +15,13 @@ export default class SinglePricebox extends Component {
 
 
   toggleEditPriceSubmission = getPriceIndex => {
-      const { editCurrentPrice, date } = this.props;
+      const { toggleItemEditing, date } = this.props;
   
       // toggle the pop up (close)
-      this.showPopup();
+      // this.showPopup();
   
       toggleItemEditing({ ...getPriceIndex, date });
+      console.log("date?", date);
     };
 
       /* handles edit current security form submissions */
@@ -38,7 +40,7 @@ export default class SinglePricebox extends Component {
     return (
       <div className="pricebox">
         <article className="pricetable">
-        {this.toggleItemEditing
+        {this.toggleEditPriceSubmission
               ? "editing" : "not editing"}
           <table>
             <tbody>
@@ -51,7 +53,7 @@ export default class SinglePricebox extends Component {
                     className="edit-btn"
                     onClick={this.toggleEditPriceSubmission}
                   >
-                    {this.toggleItemEditing ? "Save" : "Edit"}
+                    {this.toggleEditPriceSubmission ? "Save" : "Edit"}
                   </button>
                 </td>
                 <td>
