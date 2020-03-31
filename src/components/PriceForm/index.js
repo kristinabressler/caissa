@@ -51,13 +51,13 @@ export default class PriceForm extends Component {
     return (
       <div className="popup">
         <div className="popup-inner">
-          <form className="price-form">
+          <div className="price-form">
             <h2>Prices</h2>
             <div className="scroll-box">
-            {this.state.priceArr.map(props => (
+            {this.state.priceArr.map((props, i) => (
               <PriceBox
                 {...props}
-                key={props.id}
+                key={i}
               />
             ))}
             </div>
@@ -82,7 +82,7 @@ export default class PriceForm extends Component {
               </button>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     );
