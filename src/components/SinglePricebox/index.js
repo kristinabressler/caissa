@@ -14,26 +14,26 @@ export default class SinglePricebox extends Component {
   };
 
 
-  toggleEditPriceSubmission = getPriceIndex => {
-      const { toggleItemEditing, date } = this.props;
+  // toggleEditPriceSubmission = getPriceIndex => {
+  //     const { toggleItemEditing, date } = this.props;
   
-      // toggle the pop up (close)
-      // this.showPopup();
+  //     // toggle the pop up (close)
+  //     this.showPopup();
   
-      toggleItemEditing({ ...getPriceIndex, date });
-      console.log("date?", date);
-    };
+  //     toggleItemEditing({ ...getPriceIndex, date });
+  //     console.log("date?", date);
+  //   };
 
-    handleEditSecuritySubmission = editSecurity => {
-      const { editCurrentSecurity, id } = this.props;
+  //   handleEditSecuritySubmission = editSecurity => {
+  //     const { editCurrentSecurity, id } = this.props;
   
-      // toggle the pop up (close)
-      this.togglePopup();
+  //     // toggle the pop up (close)
+  //     this.togglePopup();
   
-      // sends the editSecurity fields (name, isin, country) + id back to
-      // App's "this.editCurrentSecurity"
-      editCurrentSecurity({ ...editSecurity, id });
-    };
+  //     // sends the editSecurity fields (name, isin, country) + id back to
+  //     // App's "this.editCurrentSecurity"
+  //     editCurrentSecurity({ ...editSecurity, id });
+  //   };
 
   render() {
     return (

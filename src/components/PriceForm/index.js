@@ -49,20 +49,20 @@ export default class PriceForm extends Component {
       }));
     };
 
-    editCurrentSecurity = editedSecurity => {
-      this.setState(prevState => ({
-        list: prevState.list.map(list =>
-          list.id === editedSecurity.id ? { list, ...editedSecurity } : list
-        )
-      }));
-    };
+    // editCurrentSecurity = editedSecurity => {
+    //   this.setState(prevState => ({
+    //     list: prevState.list.map(list =>
+    //       list.id === editedSecurity.id ? { list, ...editedSecurity } : list
+    //     )
+    //   }));
+    // };
 
     handleFormSubmit = e => {
       // prevents page refreshes on submission
       e.preventDefault();
   
       const { date, price } = this.state;
-      const { addSecurity, handleEditSecuritySubmission } = this.props;
+      const { addPrice, handleEditPriceSubmission } = this.props;
   
       const fields = {
         date,
@@ -78,11 +78,13 @@ export default class PriceForm extends Component {
       // one of them was passed in from a parent component
       this.setState({ formErrors }, () => {
         if (!formErrors) {
-          if (addSecurity) addSecurity(fields);
-          else handleEditSecuritySubmission(fields);
+          if (addPrice) addPrice(fields);
+          else handleEditPriceSubmission(fields);
         }
       });
+      closePopup();
       // console.log("submission", fields);
+      console.log("Is this button working?");
     };
 
     // handleEditPriceSubmission = editPrice => {
@@ -110,7 +112,7 @@ export default class PriceForm extends Component {
               <PriceBox
                 {...props}
                 key={props.date}
-                editCurrentSecurity={this.editCurrentSecurity}
+                // editCurrentSecurity={this.editCurrentSecurity}
                 // toggleItemEditing={this.toggleItemEditing()}
                 // onChange={this.handleItemUpdate}
               />
