@@ -18,8 +18,8 @@ export default class AddPriceForm extends Component {
     updates the "date" and "number" form fields via 
     [e.target.name]: e.target.value 
   */
-  updateInput = ({ target: { name, value } }) =>
-    this.setState({ [name]: value });
+  updateInput = ({ target: { name, value, type } }) =>
+    this.setState({ [name]: type === 'number' ? Number(value) : value });
 
   /* handles security form submissions */
   handlePriceFormSubmit = e => {

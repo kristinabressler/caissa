@@ -10,7 +10,8 @@ import "./App.css";
 class App extends Component {
   state = {
     list: securitiesgroup,
-    showPopup: false
+    showPopup: false,
+    prices: []
   };
 
   /* toggle and close popup window */
@@ -41,11 +42,12 @@ class App extends Component {
     this.setState(prevState => ({
       showPopup: !prevState.showPopup,
       // spreads out the previous list and adds the new security with a unique id
-      list: [...prevState.list, { ...newSecurity, id: uuid() }]
+      list: [...prevState.list, { ...newSecurity, id: uuid(), prices: [] }]
     }));
   };
 
   render() {
+    console.log("ListArr", this.state.list);
     return (
       <div className="App">
         <header className="App-header">

@@ -24,17 +24,16 @@ export default class SinglePricebox extends Component {
       console.log("date?", date);
     };
 
-      /* handles edit current security form submissions */
-  // handleEditSecuritySubmission = editSecurity => {
-  //   const { editCurrentSecurity, id } = this.props;
-
-  //   // toggle the pop up (close)
-  //   this.togglePopup();
-
-  //   // sends the editSecurity fields (name, isin, country) + id back to
-  //   // App's "this.editCurrentSecurity"
-  //   editCurrentSecurity({ ...editSecurity, id });
-  // };
+    handleEditSecuritySubmission = editSecurity => {
+      const { editCurrentSecurity, id } = this.props;
+  
+      // toggle the pop up (close)
+      this.togglePopup();
+  
+      // sends the editSecurity fields (name, isin, country) + id back to
+      // App's "this.editCurrentSecurity"
+      editCurrentSecurity({ ...editSecurity, id });
+    };
 
   render() {
     return (

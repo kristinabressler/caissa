@@ -54,6 +54,7 @@ export default class SecurityForm extends Component {
         else handleEditSecuritySubmission(fields);
       }
     });
+    console.log("submission", fields);
   };
 
   render() {

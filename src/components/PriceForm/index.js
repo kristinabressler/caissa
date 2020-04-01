@@ -49,42 +49,57 @@ export default class PriceForm extends Component {
       }));
     };
 
-    // handlePriceSubmission = () => {
-    //   const { updatePrice } = this.props;
-
-    //   this.addPricePopup();
-
-    //   updatePrice(priceArr);
-    // };
-
-    toggleItemEditing = (index) => {
+    editCurrentSecurity = editedSecurity => {
       this.setState(prevState => ({
-        priceArr: prevState.priceArr.map(priceItem => {
-
-              // isToggleOn: !state.isToggleOn;
-            
-        })
+        list: prevState.list.map(list =>
+          list.id === editedSecurity.id ? { list, ...editedSecurity } : list
+        )
       }));
     };
 
-    // toggleItemEditing = index => {
-    //   this.setState({
-    //     items: this.state.items.map((item, itemIndex) => {
-    //       if (itemIndex === index) {
-    //         return {
-    //           ...item,
-    //           isEditing: !item.isEditing
-    //         }
-    //       }
-    //       return item;
-    //     })
-    //   });
+    handleFormSubmit = e => {
+      // prevents page refreshes on submission
+      e.preventDefault();
+  
+      const { date, price } = this.state;
+      const { addSecurity, handleEditSecuritySubmission } = this.props;
+  
+      const fields = {
+        date,
+        price
+      };
+  
+      // checks if any of the form fields contain empty values
+      const formErrors = Object.values(fields).some(value => !value);
+  
+      // this sets formError state, then after setting state
+      // it'll check if there are errors, if no errors, then
+      // it will either call addSecurity or editSecurity or deleteSecurity depending on if
+      // one of them was passed in from a parent component
+      this.setState({ formErrors }, () => {
+        if (!formErrors) {
+          if (addSecurity) addSecurity(fields);
+          else handleEditSecuritySubmission(fields);
+        }
+      });
+      // console.log("submission", fields);
+    };
+
+    // handleEditPriceSubmission = editPrice => {
+    //   const { editCurrentPrice, date } = this.props;
+  
+    //   // toggle the pop up (close)
+    //   this.togglePopup();
+  
+    //   // sends the editSecurity fields (name, isin, country) + id back to
+    //   // App's "this.editCurrentSecurity"
+    //   editCurrentPrice({ ...editPrice, date });
     // };
 
 
   render() {
     // const { updatePrice } = this.props;
-
+    console.log("PriceArr", this.state.priceArr);
     return (
       <div className="popup">
         <div className="popup-inner">
@@ -95,8 +110,9 @@ export default class PriceForm extends Component {
               <PriceBox
                 {...props}
                 key={props.date}
+                editCurrentSecurity={this.editCurrentSecurity}
                 // toggleItemEditing={this.toggleItemEditing()}
-                onChange={this.handleItemUpdate}
+                // onChange={this.handleItemUpdate}
               />
             ))}
             </div>
@@ -114,7 +130,7 @@ export default class PriceForm extends Component {
               <div className="add-btns">
               <button
                 type="button"
-                onClick={() => this.props.closeUpdatePopup()}
+                onClick={this.handleFormSubmit}
                 className="btn cancel-button"
               >
                 Close
