@@ -29,28 +29,25 @@ class App extends Component {
       list: prevState.list.map(list =>
         list.id === editedSecurity.id ? { list, ...editedSecurity } : list
       )
-    }, {newlist: editedSecurity, id: editedSecurity.id}
+    }
     )
     );
   };
 
     /* edits current price */
-    editCurrentPrice = editedPrice => {
-      this.setState(prevState => ({
-        list: prevState.list.map(list =>
-          list.id === this.state.test.id
-            ? {
-                ...list,
-                prices: list.prices.map(price =>
-                  price.date === editedPrice.date
-                    ? { price, ...editedPrice }
-                    : price,
-                ),
-              }
-            : list,
-        ),
-      }))
-    }
+    editCurrentPrice = editedPrices => {
+      this.setState(prevState => {
+        return {
+          list: prevState.list.map(list => {
+            if (list.id === this.state.test.id) {
+              return { ...list, prices: editedPrices };
+            } else {
+              return list;
+            }
+          })
+        };
+      });
+    };
 
   /* delete the security from the list */
   deleteSecurity = deleteSecurityId => {
