@@ -11,7 +11,9 @@ class App extends Component {
   state = {
     list: securitiesgroup,
     showPopup: false,
-    prices: []
+    prices: [],
+    newlist: [],
+    id: ""
   };
 
   /* toggle and close popup window */
@@ -27,20 +29,28 @@ class App extends Component {
       list: prevState.list.map(list =>
         list.id === editedSecurity.id ? { list, ...editedSecurity } : list
       )
-    }));
+    }, {newlist: editedSecurity, id: editedSecurity.id}
+    )
+    );
   };
+
     /* edits current price */
     editCurrentPrice = editedPrice => {
       this.setState(prevState => ({
         list: prevState.list.map(list =>
-          if (list.id === editedSecurity.id ){
-            prices: prevState.prices.map(price =>
-              price.date === editedPrice.date ? {price, ...editedPrice} : price
-              )
-          }
-        )
-      }));
-    };
+          list.id === this.state.test.id
+            ? {
+                ...list,
+                prices: list.prices.map(price =>
+                  price.date === editedPrice.date
+                    ? { price, ...editedPrice }
+                    : price,
+                ),
+              }
+            : list,
+        ),
+      }))
+    }
 
   /* delete the security from the list */
   deleteSecurity = deleteSecurityId => {
@@ -60,6 +70,8 @@ class App extends Component {
 
   render() {
     console.log("ListArr", this.state.list);
+    console.log("newlist", this.state.newlist);
+    console.log("id", this.state.id);
     return (
       <div className="App">
         <header className="App-header">

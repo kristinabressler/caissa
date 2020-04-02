@@ -37,6 +37,7 @@ export default class SingleSecuritybox extends Component {
     editCurrentSecurity({ ...editSecurity, id });
   };
 
+
     /* handles edit current price form submissions */
     handleEditPriceSubmission = editPrice => {
       const { editCurrentPrice, date } = this.props;
@@ -44,6 +45,8 @@ export default class SingleSecuritybox extends Component {
       editCurrentPrice({ ...editPrice, date });
     };
 
+
+    
     /* handles delete current security form submissions */
   handleDeleteSecurity = () => {
     const { deleteSecurity, id } = this.props;
