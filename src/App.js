@@ -29,6 +29,18 @@ class App extends Component {
       )
     }));
   };
+    /* edits current price */
+    editCurrentPrice = editedPrice => {
+      this.setState(prevState => ({
+        list: prevState.list.map(list =>
+          if (list.id === editedSecurity.id ){
+            prices: prevState.prices.map(price =>
+              price.date === editedPrice.date ? {price, ...editedPrice} : price
+              )
+          }
+        )
+      }));
+    };
 
   /* delete the security from the list */
   deleteSecurity = deleteSecurityId => {
@@ -65,6 +77,7 @@ class App extends Component {
                 key={props.id}
                 securitylist = {this.state.list}
                 editCurrentSecurity={this.editCurrentSecurity}
+                editCurrentPrice={this.editCurrentPrice}
                 deleteSecurity={this.deleteSecurity}
               />
             ))}

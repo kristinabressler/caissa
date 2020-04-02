@@ -61,29 +61,21 @@ export default class PriceForm extends Component {
       // prevents page refreshes on submission
       e.preventDefault();
   
-      const { date, price } = this.state;
+      const { priceArr } = this.state;
       const { addPrice, handleEditPriceSubmission } = this.props;
   
-      const fields = {
-        date,
-        price
-      };
-  
-      // checks if any of the form fields contain empty values
-      const formErrors = Object.values(fields).some(value => !value);
+      const fields = {priceArr};
   
       // this sets formError state, then after setting state
       // it'll check if there are errors, if no errors, then
       // it will either call addSecurity or editSecurity or deleteSecurity depending on if
       // one of them was passed in from a parent component
-      this.setState({ formErrors }, () => {
-        if (!formErrors) {
+      this.setState(() => {
           if (addPrice) addPrice(fields);
           else handleEditPriceSubmission(fields);
-        }
       });
-      closePopup();
-      // console.log("submission", fields);
+      this.props.closePopup();
+      console.log("submission", fields);
       console.log("Is this button working?");
     };
 

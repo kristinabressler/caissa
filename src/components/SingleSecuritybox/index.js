@@ -41,11 +41,6 @@ export default class SingleSecuritybox extends Component {
     handleEditPriceSubmission = editPrice => {
       const { editCurrentPrice, date } = this.props;
   
-      // toggle the pop up (close)
-      this.togglePopup();
-  
-      // sends the editSecurity fields (name, isin, country) + id back to
-      // App's "this.editCurrentSecurity"
       editCurrentPrice({ ...editPrice, date });
     };
 
@@ -91,7 +86,7 @@ export default class SingleSecuritybox extends Component {
                   {this.state.showPricePopup ? (
                     <PriceForm
                       pricelist= {this.props.price}
-                      handleEditSecuritySubmission={ this.handleEditSecuritySubmission }
+                      handleEditPriceSubmission={ this.handleEditPriceSubmission }
                       editCurrentPrice={this.editCurrentPrice}
                       closePopup= {this.togglePricePopup}
                     />
