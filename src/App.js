@@ -10,10 +10,7 @@ import "./App.css";
 class App extends Component {
   state = {
     list: securitiesgroup,
-    showPopup: false,
-    prices: [],
-    newlist: [],
-    id: ""
+    showPopup: false
   };
 
   /* toggle and close popup window */
@@ -29,25 +26,8 @@ class App extends Component {
       list: prevState.list.map(list =>
         list.id === editedSecurity.id ? { list, ...editedSecurity } : list
       )
-    }
-    )
-    );
+    }));
   };
-
-    /* edits current price */
-    editCurrentPrice = editedPrices => {
-      this.setState(prevState => {
-        return {
-          list: prevState.list.map(list => {
-            if (list.id === this.state.test.id) {
-              return { ...list, prices: editedPrices };
-            } else {
-              return list;
-            }
-          })
-        };
-      });
-    };
 
   /* delete the security from the list */
   deleteSecurity = deleteSecurityId => {
@@ -66,9 +46,6 @@ class App extends Component {
   };
 
   render() {
-    console.log("ListArr", this.state.list);
-    console.log("newlist", this.state.newlist);
-    console.log("id", this.state.id);
     return (
       <div className="App">
         <header className="App-header">
@@ -86,7 +63,6 @@ class App extends Component {
                 key={props.id}
                 securitylist = {this.state.list}
                 editCurrentSecurity={this.editCurrentSecurity}
-                editCurrentPrice={this.editCurrentPrice}
                 deleteSecurity={this.deleteSecurity}
               />
             ))}

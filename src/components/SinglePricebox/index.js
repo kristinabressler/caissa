@@ -39,8 +39,6 @@ export default class SinglePricebox extends Component {
     return (
       <div className="pricebox">
         <article className="pricetable">
-        {this.toggleEditPriceSubmission
-              ? "editing" : "not editing"}
           <table>
             <tbody>
               <tr>
@@ -52,7 +50,7 @@ export default class SinglePricebox extends Component {
                     className="edit-btn"
                     onClick={this.toggleEditPriceSubmission}
                   >
-                    {this.toggleEditPriceSubmission ? "Save" : "Edit"}
+                    {this.toggleEditPriceSubmission ? "Edit" : "Save"}
                   </button>
                 </td>
                 <td>

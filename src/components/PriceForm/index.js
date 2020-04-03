@@ -49,14 +49,6 @@ export default class PriceForm extends Component {
       }));
     };
 
-    // editCurrentSecurity = editedSecurity => {
-    //   this.setState(prevState => ({
-    //     list: prevState.list.map(list =>
-    //       list.id === editedSecurity.id ? { list, ...editedSecurity } : list
-    //     )
-    //   }));
-    // };
-
     handleFormSubmit = e => {
       // prevents page refreshes on submission
       e.preventDefault();
@@ -66,10 +58,6 @@ export default class PriceForm extends Component {
   
       const fields = {priceArr};
   
-      // this sets formError state, then after setting state
-      // it'll check if there are errors, if no errors, then
-      // it will either call addSecurity or editSecurity or deleteSecurity depending on if
-      // one of them was passed in from a parent component
       this.setState(() => {
           if (addPrice) addPrice(fields);
           else handleEditPriceSubmission(fields);
@@ -79,21 +67,10 @@ export default class PriceForm extends Component {
       console.log("Is this button working?");
     };
 
-    // handleEditPriceSubmission = editPrice => {
-    //   const { editCurrentPrice, date } = this.props;
-  
-    //   // toggle the pop up (close)
-    //   this.togglePopup();
-  
-    //   // sends the editSecurity fields (name, isin, country) + id back to
-    //   // App's "this.editCurrentSecurity"
-    //   editCurrentPrice({ ...editPrice, date });
-    // };
-
 
   render() {
     // const { updatePrice } = this.props;
-    console.log("PriceArr", this.state.priceArr);
+    // console.log("PriceArr", this.state.priceArr);
     return (
       <div className="popup">
         <div className="popup-inner">
@@ -104,9 +81,6 @@ export default class PriceForm extends Component {
               <PriceBox
                 {...props}
                 key={props.date}
-                // editCurrentSecurity={this.editCurrentSecurity}
-                // toggleItemEditing={this.toggleItemEditing()}
-                // onChange={this.handleItemUpdate}
               />
             ))}
             </div>

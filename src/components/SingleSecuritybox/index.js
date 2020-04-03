@@ -8,9 +8,9 @@ export default class SingleSecuritybox extends Component {
       this.state = {
         showPopup: false,
         showPricePopup: false, //don't show popup
-        pricelist: this.props.price
+        pricelist: this.props.price,
     };
-    // console.log("price list", this.state.pricelist);
+    console.log("price list", this.state.pricelist);
   }
 
   /* toggle and close popup edit form window */
@@ -39,14 +39,16 @@ export default class SingleSecuritybox extends Component {
 
 
     /* handles edit current price form submissions */
-    handleEditPriceSubmission = editPrice => {
-      const { editCurrentPrice, date } = this.props;
-
-      this.togglePricePopup();
+    // handleEditPriceSubmission = editPrice => {
+    //   // this.setState(prevState => ({
+    //   //   pricelist: prevState.pricelist.map(priceitem =>
+    //   //     priceitem.date === editPrice.date ? { priceitem, ...editPrice } : priceitem
+    //   //       )
+    //   //     }));
   
-      editCurrentPrice({ ...editPrice, date });
-      console.log("Current date", date);
-    };
+    
+    //   console.log("Current pricelist", editPrice);
+    // }; 
 
 
 
@@ -61,18 +63,19 @@ export default class SingleSecuritybox extends Component {
     deleteSecurity(id);
   };
 
-  editCurrentPrice = editedPrice => {
-    this.setState(prevState => ({
-      pricelist: prevState.pricelist.map(pricelist =>
-        pricelist.date === editedPrice.date ? { pricelist, ...editedPrice } : pricelist
-      )
-    }));
-  };
+  // editCurrentPrice = editedPrice => {
+  //   this.setState(prevState => ({
+  //     pricelist: prevState.pricelist.map(pricelist =>
+  //       pricelist.date === editedPrice.date ? { pricelist, ...editedPrice } : pricelist
+  //     )
+  //   }));
+  // };
 
 
 
 
   render() {
+    console.log("Updated Price list", this.state.pricelist);
     return (
       <div className="box">
         <article className="securitytable">
@@ -93,7 +96,7 @@ export default class SingleSecuritybox extends Component {
                     <PriceForm
                       pricelist= {this.props.price}
                       handleEditPriceSubmission={ this.handleEditPriceSubmission }
-                      editCurrentPrice={this.editCurrentPrice}
+                      addPrice={this.addPrice}
                       closePopup= {this.togglePricePopup}
                     />
                   ) : null}
