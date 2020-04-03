@@ -54,23 +54,24 @@ export default class PriceForm extends Component {
       e.preventDefault();
   
       const { priceArr } = this.state;
-      const { addPrice, handleEditPriceSubmission } = this.props;
+      const { addPrice, UpdatePriceList } = this.props;
   
       const fields = {priceArr};
+
+      this.props.closePopup();
   
       this.setState(() => {
-          if (addPrice) addPrice(fields);
-          else handleEditPriceSubmission(fields);
+          // if (addPrice) addPrice(fields);
+          UpdatePriceList(fields);
       });
-      this.props.closePopup();
       console.log("submission", fields);
       console.log("Is this button working?");
     };
 
 
   render() {
-    // const { updatePrice } = this.props;
-    // console.log("PriceArr", this.state.priceArr);
+    // const { priceArr } = this.state;
+    // console.log("PriceForm PriceArr", priceArr);
     return (
       <div className="popup">
         <div className="popup-inner">

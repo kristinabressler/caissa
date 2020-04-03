@@ -10,7 +10,7 @@ export default class SingleSecuritybox extends Component {
         showPricePopup: false, //don't show popup
         pricelist: this.props.price,
     };
-    console.log("price list", this.state.pricelist);
+    // console.log("price list", this.state.pricelist);
   }
 
   /* toggle and close popup edit form window */
@@ -35,7 +35,13 @@ export default class SingleSecuritybox extends Component {
     // sends the editSecurity fields (name, isin, country) + id back to
     // App's "this.editCurrentSecurity"
     editCurrentSecurity({ ...editSecurity, id });
+    // console.log("editing security", editSecurity);
   };
+
+  UpdatePriceList = updatePrice => {
+    this.setState({pricelist: updatePrice});
+    console.log("updating", updatePrice);
+  }
 
 
     /* handles edit current price form submissions */
@@ -95,7 +101,7 @@ export default class SingleSecuritybox extends Component {
                   {this.state.showPricePopup ? (
                     <PriceForm
                       pricelist= {this.props.price}
-                      handleEditPriceSubmission={ this.handleEditPriceSubmission }
+                      UpdatePriceList={ this.UpdatePriceList }
                       addPrice={this.addPrice}
                       closePopup= {this.togglePricePopup}
                     />
