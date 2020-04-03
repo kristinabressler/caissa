@@ -50,7 +50,7 @@ export default class SinglePricebox extends Component {
                     className="edit-btn"
                     onClick={this.toggleEditPriceSubmission}
                   >
-                    {this.toggleEditPriceSubmission ? "Edit" : "Save"}
+                    {this.toggleEditPriceSubmission ? "Save" : "Edit"}
                   </button>
                 </td>
                 <td>
