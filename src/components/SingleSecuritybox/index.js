@@ -8,7 +8,7 @@ export default class SingleSecuritybox extends Component {
       this.state = {
         showPopup: false,
         showPricePopup: false, //don't show popup
-        pricelist: this.props.price,
+        pricelist: this.props.price
     };
     // console.log("price list", this.state.pricelist);
   }
@@ -38,24 +38,11 @@ export default class SingleSecuritybox extends Component {
     // console.log("editing security", editSecurity);
   };
 
-  UpdatePriceList = updatePrice => {
-    this.setState({pricelist: updatePrice});
-    console.log("updating", updatePrice);
-  }
+  updatePrice = updatePrice => {
+    const { updatePriceList, id } = this.props;
 
-
-    /* handles edit current price form submissions */
-    // handleEditPriceSubmission = editPrice => {
-    //   // this.setState(prevState => ({
-    //   //   pricelist: prevState.pricelist.map(priceitem =>
-    //   //     priceitem.date === editPrice.date ? { priceitem, ...editPrice } : priceitem
-    //   //       )
-    //   //     }));
-  
-    
-    //   console.log("Current pricelist", editPrice);
-    // }; 
-
+    updatePriceList({...updatePrice, id});
+  };
 
 
     /* handles delete current security form submissions */
@@ -101,8 +88,8 @@ export default class SingleSecuritybox extends Component {
                   {this.state.showPricePopup ? (
                     <PriceForm
                       pricelist= {this.props.price}
-                      UpdatePriceList={ this.UpdatePriceList }
-                      addPrice={this.addPrice}
+                      updatePrice={ this.updatePrice }
+                      addPrice={this.props.addPrice}
                       closePopup= {this.togglePricePopup}
                     />
                   ) : null}

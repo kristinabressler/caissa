@@ -49,12 +49,20 @@ export default class PriceForm extends Component {
       }));
     };
 
+    // addPrice = newPrice => {
+    //   this.setState(prevState => ({
+    //     addPricePopup: !prevState.addPricePopup,
+    //     // spreads out the previous list and adds the new price with a unique id
+    //     priceArr: [...prevState.priceArr, { ...newPrice }]
+    //   }));
+    // };
+
     handleFormSubmit = e => {
       // prevents page refreshes on submission
       e.preventDefault();
   
       const { priceArr } = this.state;
-      const { addPrice, UpdatePriceList } = this.props;
+      const { updatePrice } = this.props;
   
       const fields = {priceArr};
 
@@ -62,7 +70,7 @@ export default class PriceForm extends Component {
   
       this.setState(() => {
           // if (addPrice) addPrice(fields);
-          UpdatePriceList(fields);
+          updatePrice(fields);
       });
       console.log("submission", fields);
       console.log("Is this button working?");

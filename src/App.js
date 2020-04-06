@@ -45,6 +45,20 @@ class App extends Component {
     }));
   };
 
+  updatePriceList = (newPriceList) => {
+    this.setState(prevState => {
+      return {
+        list: prevState.list.map(list => {
+          if (list.id === newPriceList.id) {
+            return { ...list, prices: newPriceList };
+          } else {
+            return list;
+          }
+        })
+      };
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -61,6 +75,7 @@ class App extends Component {
               <SecurityBox
                 {...props}
                 key={props.id}
+                updatePriceList={this.updatePriceList} 
                 securitylist = {this.state.list}
                 editCurrentSecurity={this.editCurrentSecurity}
                 deleteSecurity={this.deleteSecurity}
