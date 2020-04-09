@@ -19,6 +19,7 @@ export default class SingleSecuritybox extends Component {
       showPopup: !prevState.showPopup
     }));
   };
+
   togglePricePopup = () => {
     this.setState(prevState => ({
       showPricePopup: !prevState.showPricePopup
@@ -40,8 +41,12 @@ export default class SingleSecuritybox extends Component {
 
   updatePrice = updatePrice => {
     const { updatePriceList, id } = this.props;
+    
+    this.togglePricePopup();
 
     updatePriceList({...updatePrice, id});
+
+    console.log("editing price", updatePrice);
   };
 
 

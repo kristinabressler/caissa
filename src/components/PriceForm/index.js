@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PriceBox from "../SinglePricebox/index";
-// import SecurityForm from "../SecurityForm/index";
 import AddPriceForm from "../AddPriceForm/index";
-// import { uuid } from "uuidv4";
 
 export default class PriceForm extends Component {
   constructor(props) {
@@ -10,7 +8,6 @@ export default class PriceForm extends Component {
 
     this.state = {
       priceArr: this.props.pricelist,
-      // newPriceArr: this.props.updatePrice,
       showPricePopup: false,
       addPricePopup: false,
       isToggleOn: true,
@@ -49,31 +46,23 @@ export default class PriceForm extends Component {
       }));
     };
 
-    // addPrice = newPrice => {
-    //   this.setState(prevState => ({
-    //     addPricePopup: !prevState.addPricePopup,
-    //     // spreads out the previous list and adds the new price with a unique id
-    //     priceArr: [...prevState.priceArr, { ...newPrice }]
-    //   }));
-    // };
-
-    handleFormSubmit = e => {
-      // prevents page refreshes on submission
-      e.preventDefault();
+    handleFormSubmit = () => {
   
       const { priceArr } = this.state;
       const { updatePrice } = this.props;
   
       const fields = {priceArr};
 
-      this.props.closePopup();
+      // this.props.closePopup();
   
       this.setState(() => {
           // if (addPrice) addPrice(fields);
           updatePrice(fields);
       });
+
+
       console.log("submission", fields);
-      console.log("Is this button working?");
+      // console.log("Is this button working?");
     };
 
 
