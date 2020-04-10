@@ -49,16 +49,15 @@ export default class PriceForm extends Component {
     handleFormSubmit = () => {
   
       const { priceArr } = this.state;
-      const { updatePrice } = this.props;
+      // const { updatePrice } = this.props;
   
       const fields = {priceArr};
-
-      // this.props.closePopup();
   
-      this.setState(() => {
-          // if (addPrice) addPrice(fields);
-          updatePrice(fields);
-      });
+      // this.setState(() => {
+      //     // if (addPrice) addPrice(fields);
+      //     updatePrice(fields);
+      // });
+      this.props.updatePrice(fields);
 
 
       console.log("submission", fields);

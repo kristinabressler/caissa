@@ -73,7 +73,7 @@ export default class SingleSecuritybox extends Component {
 
 
   render() {
-    console.log("Updated Price list", this.state.pricelist);
+    // console.log("Updated Price list", this.state.pricelist);
     return (
       <div className="box">
         <article className="securitytable">

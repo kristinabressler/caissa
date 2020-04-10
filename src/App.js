@@ -27,6 +27,7 @@ class App extends Component {
         list.id === editedSecurity.id ? { list, ...editedSecurity } : list
       )
     }));
+    console.log("edited security", editedSecurity);
   };
 
   /* delete the security from the list */
@@ -50,13 +51,14 @@ class App extends Component {
       return {
         list: prevState.list.map(list => {
           if (list.id === newPriceList.id) {
-            return { ...list, prices: newPriceList };
+            return { ...list, price: newPriceList.priceArr };
           } else {
             return list;
           }
         })
       };
     });
+    console.log("main price list", newPriceList);
   };
 
   render() {
