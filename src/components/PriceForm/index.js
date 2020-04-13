@@ -78,13 +78,14 @@ export default class PriceForm extends Component {
     };
 
     handleDeletePrice = deletePrice => {
-
+      // const { date } = this.props;
       this.setState(prevState => ({
         // spreads out the previous list and delete the price with a unique id
         priceArr: prevState.priceArr.filter(item => item.date !== deletePrice)
       }));
+      console.log("delete price", deletePrice);
     };
-    
+
 
     handleFormSubmit = () => {
   

@@ -29,7 +29,7 @@ export default class SinglePricebox extends Component {
                   <button
                     type="button"
                     className="delete-btn"
-                    onClick={() => this.props.handleDeletePrice()}
+                    onClick={() => this.props.handleDeletePrice(this.props.date)}
                     >
                       X
                     </button>
