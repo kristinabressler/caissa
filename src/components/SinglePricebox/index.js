@@ -2,38 +2,9 @@ import React, { Component } from "react";
 
 export default class SinglePricebox extends Component {
   state = {
-    showPopup: false, //don't show popup
     todaydate: this.props.date
   };
 
-  /* toggle and close popup edit form window */
-  togglePopup = () => {
-    this.setState(prevState => ({
-      showPopup: !prevState.showPopup
-    }));
-  };
-
-
-  // toggleEditPriceSubmission = getPriceIndex => {
-  //     const { toggleItemEditing, date } = this.props;
-  
-  //     // toggle the pop up (close)
-  //     this.showPopup();
-  
-  //     toggleItemEditing({ ...getPriceIndex, date });
-  //     console.log("date?", date);
-  //   };
-
-  //   handleEditSecuritySubmission = editSecurity => {
-  //     const { editCurrentSecurity, id } = this.props;
-  
-  //     // toggle the pop up (close)
-  //     this.togglePopup();
-  
-  //     // sends the editSecurity fields (name, isin, country) + id back to
-  //     // App's "this.editCurrentSecurity"
-  //     editCurrentSecurity({ ...editSecurity, id });
-  //   };
 
   render() {
     return (
@@ -54,11 +25,15 @@ export default class SinglePricebox extends Component {
                   </button>
                 </td>
                 <td>
+                {this.props.handleDeletePrice && (
                   <button
                     type="button"
-                    className="delete-btn">
+                    className="delete-btn"
+                    onClick={() => this.props.handleDeletePrice()}
+                    >
                       X
                     </button>
+                    )}
                 </td>
               </tr>
             </tbody>

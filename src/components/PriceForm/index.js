@@ -31,6 +31,37 @@ export default class PriceForm extends Component {
     }));
   };
 
+  toggleItemEditing = index => {
+    this.setState({
+      priceArr: this.state.priceArr.map((item, itemIndex) => {
+        if (itemIndex === index) {
+          return {
+            ...item,
+            isEditing: !item.isEditing
+          }
+        }
+        return item;
+      })
+    });
+  };
+
+  handleItemUpdate = (event, index) => {
+    const target = event.target;
+    const value = target.value;
+    const number = target.number;
+    this.setState({
+      items: this.state.items.map((item, itemIndex) => {
+        if (itemIndex === index) {
+          return {
+            ...item,
+            [number]: value
+          }
+        }
+        return item;
+      })
+    });
+  };
+
   addPricePopup = () => {
     this.setState(prevState => ({
       addPricePopup: !prevState.addPricePopup
@@ -46,28 +77,28 @@ export default class PriceForm extends Component {
       }));
     };
 
+    handleDeletePrice = deletePrice => {
+
+      this.setState(prevState => ({
+        // spreads out the previous list and delete the price with a unique id
+        priceArr: prevState.priceArr.filter(item => item.date !== deletePrice)
+      }));
+    };
+    
+
     handleFormSubmit = () => {
   
       const { priceArr } = this.state;
-      // const { updatePrice } = this.props;
   
       const fields = {priceArr};
   
-      // this.setState(() => {
-      //     // if (addPrice) addPrice(fields);
-      //     updatePrice(fields);
-      // });
       this.props.updatePrice(fields);
 
-
       console.log("submission", fields);
-      // console.log("Is this button working?");
     };
 
 
   render() {
-    // const { priceArr } = this.state;
-    // console.log("PriceForm PriceArr", priceArr);
     return (
       <div className="popup">
         <div className="popup-inner">
@@ -78,6 +109,9 @@ export default class PriceForm extends Component {
               <PriceBox
                 {...props}
                 key={props.date}
+                toggleEditing={this.toggleItemEditing}
+                handleDeletePrice={this.handleDeletePrice}
+                onChange={this.handleItemUpdate}
               />
             ))}
             </div>
