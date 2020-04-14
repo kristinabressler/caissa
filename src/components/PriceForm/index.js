@@ -10,7 +10,6 @@ export default class PriceForm extends Component {
       priceArr: this.props.pricelist,
       showPricePopup: false,
       addPricePopup: false,
-      isToggleOn: true,
       date: props.date || "",
       number: props.number || ""
     };
@@ -45,12 +44,12 @@ export default class PriceForm extends Component {
     });
   };
 
-  handleItemUpdate = (event, index) => {
+  handlePriceUpdate = (event, index) => {
     const target = event.target;
     const value = target.value;
     const number = target.number;
     this.setState({
-      items: this.state.items.map((item, itemIndex) => {
+      priceArr: this.state.priceArr.map((item, itemIndex) => {
         if (itemIndex === index) {
           return {
             ...item,
@@ -60,6 +59,7 @@ export default class PriceForm extends Component {
         return item;
       })
     });
+    console.log("price update", event);
   };
 
   addPricePopup = () => {
@@ -76,7 +76,7 @@ export default class PriceForm extends Component {
         priceArr: [...prevState.priceArr, { ...newPrice }]
       }));
     };
-
+    
     handleDeletePrice = deletePrice => {
       // const { date } = this.props;
       this.setState(prevState => ({
@@ -106,13 +106,13 @@ export default class PriceForm extends Component {
           <div className="price-form">
             <h2>Prices</h2>
             <div className="scroll-box">
-            {this.state.priceArr.map((props) => (
+            {this.state.priceArr.map((props, index) => (
               <PriceBox
                 {...props}
                 key={props.date}
                 toggleEditing={this.toggleItemEditing}
                 handleDeletePrice={this.handleDeletePrice}
-                onChange={this.handleItemUpdate}
+                onChange={this.handlePriceUpdate}
               />
             ))}
             </div>
