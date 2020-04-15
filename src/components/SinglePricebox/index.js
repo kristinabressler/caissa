@@ -18,7 +18,7 @@ toggleEditPriceSubmission() {
 
 
   render() {
-    const { isInEditMode, onChange, index } = this.state;
+    const { isInEditMode, index } = this.state;
     return (
       <div className="pricebox">
         <article className="pricetable">
@@ -28,7 +28,7 @@ toggleEditPriceSubmission() {
                 <td className="date-width">{this.props.date}</td>
                 <td className="price-width">
                 {isInEditMode ? (
-                    <input type="text" name="number" value={this.props.number} onChange={event => onChange(event, index)} />
+                    <input type="text" name="number" value={this.props.number} onChange={event => this.props.onChange(event, index)}  />
                   ) : (
                     this.props.number
                   )}

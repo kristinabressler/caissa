@@ -43,29 +43,30 @@ export default class PriceForm extends Component {
       })
     });
   };
-
+  // updateInput = ({ target: { name, value } }) =>
+  // this.setState({ [name]: value });
   handlePriceUpdate = (event, index) => {
     const target = event.target;
     const value = target.value;
-    const number = target.number;
+    const name = target.name;
     this.setState({
       priceArr: this.state.priceArr.map((item, itemIndex) => {
         if (itemIndex === index) {
           return {
             ...item,
-            [number]: value
+            [name]: value
           }
         }
         return item;
       })
     });
-    console.log("price update", event);
   };
 
   addPricePopup = () => {
     this.setState(prevState => ({
       addPricePopup: !prevState.addPricePopup
     }));
+    this.btnReview.setAttribute("disabled", "disabled");
   };
 
     /* adds a new price to the list */
@@ -110,9 +111,9 @@ export default class PriceForm extends Component {
               <PriceBox
                 {...props}
                 key={props.date}
-                toggleEditing={this.toggleItemEditing}
+                toggleEditing={() => this.toggleItemEditing(index)}
                 handleDeletePrice={this.handleDeletePrice}
-                onChange={this.handlePriceUpdate}
+                onChange={(e) => this.handlePriceUpdate(e, index)}
               />
             ))}
             </div>
@@ -120,13 +121,16 @@ export default class PriceForm extends Component {
               <button
                 type="button"
                 onClick={this.addPricePopup}
-                className="btn add-button">Add +</button>
+                className="btn add-button"
+                ref={btnReview  => {this.btnReview = btnReview;}}
+                >Add +</button>
                 {this.state.addPricePopup && (
                       <AddPriceForm
                         addPrice={this.addPrice}
                         cancelPopup={this.addPricePopup}
                       />
                     )}
+              {this.btnReview ? "testing" : ""}
               <div className="add-btns">
               <button
                 type="button"

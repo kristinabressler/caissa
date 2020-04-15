@@ -61,16 +61,6 @@ export default class SingleSecuritybox extends Component {
     deleteSecurity(id);
   };
 
-  // editCurrentPrice = editedPrice => {
-  //   this.setState(prevState => ({
-  //     pricelist: prevState.pricelist.map(pricelist =>
-  //       pricelist.date === editedPrice.date ? { pricelist, ...editedPrice } : pricelist
-  //     )
-  //   }));
-  // };
-
-
-
 
   render() {
     // console.log("Updated Price list", this.state.pricelist);
@@ -88,7 +78,7 @@ export default class SingleSecuritybox extends Component {
               <tr>
                 <td className="isin-width">{this.props.isin}</td>
                 <td className="country-width">{this.props.country}</td>
-                <td>
+                <td className="price-popup">
                   <button type="button" className="price-btn" onClick={this.togglePricePopup}>Prices</button>
                   {this.state.showPricePopup ? (
                     <PriceForm

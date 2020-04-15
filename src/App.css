@@ -122,6 +122,9 @@ hr.lightgray-line {
   padding: 20px 30px;
   z-index: 20; 
 }
+.price-popup .popup-inner {
+  height: 350px;
+}
 
 /* Mini Popup */
 .mini-popup {  
@@ -279,6 +282,14 @@ hr.lightgray-line {
  }
  .price-form .cancel-button {
    margin-right: 0;
+ }
+ .add-button {
+  color: #fff;
+  background-color: #28a745;
+ }
+ .btn:disabled{ 
+  color: #fff;
+  background-color: #6c757d;
  }
 
 /*Scroll Box */
