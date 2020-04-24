@@ -123,7 +123,7 @@ hr.lightgray-line {
   z-index: 20; 
 }
 .price-popup .popup-inner {
-  height: 350px;
+  height: 360px;
 }
 
 /* Mini Popup */
@@ -290,6 +290,10 @@ hr.lightgray-line {
  .btn:disabled{ 
   color: #fff;
   background-color: #6c757d;
+ }
+ .add_btn p {
+   margin: 3px 0 0;
+   color: red;
  }
 
 /*Scroll Box */

@@ -8,9 +8,10 @@ export default class SingleSecuritybox extends Component {
       this.state = {
         showPopup: false,
         showPricePopup: false, //don't show popup
-        pricelist: this.props.price
+        pricelist: this.props.price,
+        buttonStatus: this.props.buttonstatus
     };
-    // console.log("price list", this.state.pricelist);
+    // console.log("button status single security", this.state.buttonStatus);
   }
 
   /* toggle and close popup edit form window */
@@ -40,11 +41,12 @@ export default class SingleSecuritybox extends Component {
   };
 
   updatePrice = updatePrice => {
-    const { updatePriceList, id } = this.props;
+    const { updatePriceList, updateButtonStatus, id } = this.props;
     
     this.togglePricePopup();
 
     updatePriceList({...updatePrice, id});
+    updateButtonStatus({...updatePrice, id});
 
     console.log("editing price", updatePrice);
   };
@@ -64,6 +66,7 @@ export default class SingleSecuritybox extends Component {
 
   render() {
     // console.log("Updated Price list", this.state.pricelist);
+    // console.log("updated button status single security", this.state.buttonStatus);
     return (
       <div className="box">
         <article className="securitytable">
@@ -83,6 +86,7 @@ export default class SingleSecuritybox extends Component {
                   {this.state.showPricePopup ? (
                     <PriceForm
                       pricelist= {this.props.price}
+                      buttonStatus= {this.props.buttonstatus}
                       updatePrice={ this.updatePrice }
                       addPrice={this.props.addPrice}
                       closePopup= {this.togglePricePopup}

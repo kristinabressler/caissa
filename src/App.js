@@ -61,7 +61,22 @@ class App extends Component {
     console.log("main price list", newPriceList);
   };
 
+  updateButtonStatus = (newPriceList) => {
+    this.setState(prevState => {
+      return {
+        list: prevState.list.map(list => {
+          if (list.id === newPriceList.id) {
+            return { ...list, buttonstatus: newPriceList.buttonDisabled };
+          } else {
+            return list;
+          }
+        })
+      };
+    });
+  };
+
   render() {
+    console.log("main list", this.state.list);
     return (
       <div className="App">
         <header className="App-header">
@@ -78,6 +93,7 @@ class App extends Component {
                 {...props}
                 key={props.id}
                 updatePriceList={this.updatePriceList} 
+                updateButtonStatus={this.updateButtonStatus}
                 securitylist = {this.state.list}
                 editCurrentSecurity={this.editCurrentSecurity}
                 deleteSecurity={this.deleteSecurity}

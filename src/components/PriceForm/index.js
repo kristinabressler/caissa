@@ -10,8 +10,10 @@ export default class PriceForm extends Component {
       priceArr: this.props.pricelist,
       showPricePopup: false,
       addPricePopup: false,
+      todaydate: new Date().toLocaleDateString(),
       date: props.date || "",
-      number: props.number || ""
+      number: props.number || "",
+      buttonDisabled: this.props.buttonStatus
     };
   }
 
@@ -66,7 +68,7 @@ export default class PriceForm extends Component {
     this.setState(prevState => ({
       addPricePopup: !prevState.addPricePopup
     }));
-    this.btnReview.setAttribute("disabled", "disabled");
+    
   };
 
     /* adds a new price to the list */
@@ -74,7 +76,8 @@ export default class PriceForm extends Component {
       this.setState(prevState => ({
         addPricePopup: !prevState.addPricePopup,
         // spreads out the previous list and adds the new price with a unique id
-        priceArr: [...prevState.priceArr, { ...newPrice }]
+        priceArr: [...prevState.priceArr, { ...newPrice }],
+        buttonDisabled: true
       }));
     };
     
@@ -83,16 +86,62 @@ export default class PriceForm extends Component {
       this.setState(prevState => ({
         // spreads out the previous list and delete the price with a unique id
         priceArr: prevState.priceArr.filter(item => item.date !== deletePrice)
+        
       }));
-      console.log("delete price", deletePrice);
     };
+
+    // handleDeletePrice = deletePrice => {
+    //   // const { date } = this.props;
+    //   this.setState(prevState => ({
+    //     // spreads out the previous list and delete the price with a unique id
+    //     priceArr: prevState.priceArr.filter(item => {
+    //       if (item.date !== deletePrice) {
+    //         return item;
+    //       }
+    //       if (deletePrice == todaydate) {
+    //         return buttonDisabled: true;
+    //       }
+    //     })
+    //   }));
+    // };
+
+    // handlePriceUpdate = (event, index) => {
+    //   const target = event.target;
+    //   const value = target.value;
+    //   const name = target.name;
+    //   this.setState({
+    //     priceArr: this.state.priceArr.map((item, itemIndex) => {
+    //       if (itemIndex === index) {
+    //         return {
+    //           ...item,
+    //           [name]: value
+    //         }
+    //       }
+    //       return item;
+    //     })
+    //   });
+    // };
+
+    // updateButtonStatus = (newPriceList) => {
+    //   this.setState(prevState => {
+    //     return {
+    //       list: prevState.list.map(list => {
+    //         if (list.id === newPriceList.id) {
+    //           return { ...list, buttonstatus: newPriceList.buttonDisabled };
+    //         } else {
+    //           return list;
+    //         }
+    //       })
+    //     };
+    //   });
+    // };
 
 
     handleFormSubmit = () => {
   
-      const { priceArr } = this.state;
+      const { priceArr, buttonDisabled } = this.state;
   
-      const fields = {priceArr};
+      const fields = {priceArr, buttonDisabled};
   
       this.props.updatePrice(fields);
 
@@ -118,11 +167,12 @@ export default class PriceForm extends Component {
             ))}
             </div>
             <div className="buttons-box flex-content-between">
+            <div className="add_btn">
               <button
                 type="button"
                 onClick={this.addPricePopup}
                 className="btn add-button"
-                ref={btnReview  => {this.btnReview = btnReview;}}
+                disabled={this.state.buttonDisabled}
                 >Add +</button>
                 {this.state.addPricePopup && (
                       <AddPriceForm
@@ -130,7 +180,8 @@ export default class PriceForm extends Component {
                         cancelPopup={this.addPricePopup}
                       />
                     )}
-              {this.btnReview ? "testing" : ""}
+              {this.state.buttonDisabled ? <p>Only one entry per day.</p> : ""}
+              </div>
               <div className="add-btns">
               <button
                 type="button"

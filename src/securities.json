@@ -4,6 +4,7 @@
     "name": "Lorem",
     "isin": "US02079K1079",
     "country": "Finland",
+    "buttonstatus": false,
     "price": [
       {
         "date": "01/01/19",
@@ -36,6 +37,7 @@
     "name": "Ipson",
     "isin": "US02079K1079",
     "country": "Sweden",
+    "buttonstatus": false,
     "price": [
       {
         "date": "01/01/19",
@@ -68,6 +70,7 @@
     "name": "Lorem Ipson",
     "isin": "US02079K1079",
     "country": "Iceland",
+    "buttonstatus": false,
     "price": [
       {
         "date": "01/01/19",

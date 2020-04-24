@@ -37,10 +37,6 @@ export default class AddPriceForm extends Component {
     // checks if any of the form fields contain empty values
     const formErrors = Object.values(fields).some(value => !value);
 
-    // this sets formError state, then after setting state
-    // it'll check if there are errors, if no errors, then
-    // it will either call addSecurity or editSecurity or deleteSecurity depending on if
-    // one of them was passed in from a parent component
     this.setState({ formErrors }, () => {
       if (!formErrors) {
         if (addPrice) addPrice(fields);
