@@ -48,7 +48,6 @@ export default class SingleSecuritybox extends Component {
     updatePriceList({...updatePrice, id});
     updateButtonStatus({...updatePrice, id});
 
-    console.log("editing price", updatePrice);
   };
 
 
@@ -65,8 +64,6 @@ export default class SingleSecuritybox extends Component {
 
 
   render() {
-    // console.log("Updated Price list", this.state.pricelist);
-    // console.log("updated button status single security", this.state.buttonStatus);
     return (
       <div className="box">
         <article className="securitytable">

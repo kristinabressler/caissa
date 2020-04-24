@@ -45,8 +45,7 @@ export default class PriceForm extends Component {
       })
     });
   };
-  // updateInput = ({ target: { name, value } }) =>
-  // this.setState({ [name]: value });
+
   handlePriceUpdate = (event, index) => {
     const target = event.target;
     const value = target.value;
@@ -81,60 +80,14 @@ export default class PriceForm extends Component {
       }));
     };
     
-    handleDeletePrice = deletePrice => {
-      // const { date } = this.props;
+    handleDeletePrice = deletePriceDate => {
+      const { todaydate } = this.state;
       this.setState(prevState => ({
         // spreads out the previous list and delete the price with a unique id
-        priceArr: prevState.priceArr.filter(item => item.date !== deletePrice)
-        
+        priceArr: prevState.priceArr.filter(item => item.date !== deletePriceDate),
+        buttonDisabled: !(deletePriceDate === todaydate)        
       }));
     };
-
-    // handleDeletePrice = deletePrice => {
-    //   // const { date } = this.props;
-    //   this.setState(prevState => ({
-    //     // spreads out the previous list and delete the price with a unique id
-    //     priceArr: prevState.priceArr.filter(item => {
-    //       if (item.date !== deletePrice) {
-    //         return item;
-    //       }
-    //       if (deletePrice == todaydate) {
-    //         return buttonDisabled: true;
-    //       }
-    //     })
-    //   }));
-    // };
-
-    // handlePriceUpdate = (event, index) => {
-    //   const target = event.target;
-    //   const value = target.value;
-    //   const name = target.name;
-    //   this.setState({
-    //     priceArr: this.state.priceArr.map((item, itemIndex) => {
-    //       if (itemIndex === index) {
-    //         return {
-    //           ...item,
-    //           [name]: value
-    //         }
-    //       }
-    //       return item;
-    //     })
-    //   });
-    // };
-
-    // updateButtonStatus = (newPriceList) => {
-    //   this.setState(prevState => {
-    //     return {
-    //       list: prevState.list.map(list => {
-    //         if (list.id === newPriceList.id) {
-    //           return { ...list, buttonstatus: newPriceList.buttonDisabled };
-    //         } else {
-    //           return list;
-    //         }
-    //       })
-    //     };
-    //   });
-    // };
 
 
     handleFormSubmit = () => {
@@ -145,7 +98,6 @@ export default class PriceForm extends Component {
   
       this.props.updatePrice(fields);
 
-      console.log("submission", fields);
     };
 
 

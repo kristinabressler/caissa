@@ -58,7 +58,6 @@ class App extends Component {
         })
       };
     });
-    console.log("main price list", newPriceList);
   };
 
   updateButtonStatus = (newPriceList) => {
@@ -76,7 +75,7 @@ class App extends Component {
   };
 
   render() {
-    console.log("main list", this.state.list);
+
     return (
       <div className="App">
         <header className="App-header">
