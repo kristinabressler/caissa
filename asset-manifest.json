@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/caissa/static/css/main.c5f5fe92.chunk.css",
+    "main.js": "/caissa/static/js/main.e85ac674.chunk.js",
+    "main.js.map": "/caissa/static/js/main.e85ac674.chunk.js.map",
+    "runtime-main.js": "/caissa/static/js/runtime-main.ac4d74f6.js",
+    "runtime-main.js.map": "/caissa/static/js/runtime-main.ac4d74f6.js.map",
+    "static/js/2.317d4a00.chunk.js": "/caissa/static/js/2.317d4a00.chunk.js",
+    "static/js/2.317d4a00.chunk.js.map": "/caissa/static/js/2.317d4a00.chunk.js.map",
+    "index.html": "/caissa/index.html",
+    "precache-manifest.3d06925852b57d5ba90b2209c9536afb.js": "/caissa/precache-manifest.3d06925852b57d5ba90b2209c9536afb.js",
+    "service-worker.js": "/caissa/service-worker.js",
+    "static/css/main.c5f5fe92.chunk.css.map": "/caissa/static/css/main.c5f5fe92.chunk.css.map",
+    "static/js/2.317d4a00.chunk.js.LICENSE.txt": "/caissa/static/js/2.317d4a00.chunk.js.LICENSE.txt",
+    "static/media/caissa-icon.png": "/caissa/static/media/caissa-icon.fe5993b7.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ac4d74f6.js",
+    "static/js/2.317d4a00.chunk.js",
+    "static/css/main.c5f5fe92.chunk.css",
+    "static/js/main.e85ac674.chunk.js"
+  ]
+}
