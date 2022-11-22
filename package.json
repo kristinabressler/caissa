@@ -10,7 +10,7 @@
     "react": "^16.13.1",
     "react-country-region-selector": "^2.1.0",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "uuidv4": "^6.0.7"
   },
   "scripts": {
